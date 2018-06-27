@@ -303,7 +303,7 @@ namespace MiningCore.Blockchain.ZCash
             var headerBytes = SerializeHeader(nTime, nonce); // 144 bytes (doesn't contain soln)
 
             // verify solution
-            if (!equihash.Verify(headerBytes, solutionBytes.Skip(3).ToArray())) // skip preamble (3 bytes)
+            if (!equihash.Verify(headerBytes, solutionBytes.Skip(1).ToArray())) // skip preamble (1 bytes), Equihash BTG
                 throw new StratumException(StratumError.Other, "invalid solution");
 
             // hash block-header
